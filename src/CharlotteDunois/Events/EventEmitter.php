@@ -150,38 +150,12 @@ class EventEmitter {
     }
     
     /**
-     * Emits an event.
-     * @param string  $event
-     * @param mixed   $arguments
-     * @throws \InvalidArgumentException
-     */
-    function emit($event, ...$arguments) {
-        if($event === null) {
-            throw new \InvalidArgumentException('Event name must not be null');
-        }
-        
-        if(isset($this->listeners[$event])) {
-            foreach($this->listeners[$event] as $listener) {
-                $listener(...$arguments);
-            }
-        }
-        
-        if(isset($this->onceListeners[$event])) {
-            $listeners = $this->onceListeners[$event];
-            unset($this->onceListeners[$event]);
-            foreach($listeners as $listener) {
-                $listener(...$arguments);
-            }
-        }
-    }
-    
-    /**
      * Emits an event, catching all exceptions and emitting an error event for these exceptions.
      * @param string  $event
      * @param mixed   $arguments
      * @throws \InvalidArgumentException
      */
-    function catchedEmit($event, ...$arguments) {
+    function emit($event, ...$arguments) {
         if($event === null) {
             throw new \InvalidArgumentException('Event name must not be null');
         }
