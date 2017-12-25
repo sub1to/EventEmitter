@@ -12,7 +12,7 @@ namespace CharlotteDunois\Events;
 /**
  * Our Event Emitter, equivalent to Node.js' Event Emitter.
  */
-class EventEmitter {
+class EventEmitter implements EventEmitterInterface {
     /**
      * @var array
      * @internal
