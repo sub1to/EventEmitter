@@ -1,7 +1,7 @@
 <?php
 /**
  * EventEmitter
- * Copyright 2017 Charlotte Dunois, All Rights Reserved
+ * Copyright 2018 Charlotte Dunois, All Rights Reserved
  *
  * Website: https://charuru.moe
  * License: https://github.com/CharlotteDunois/EventEmitter/blob/master/LICENSE

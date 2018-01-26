@@ -2,9 +2,9 @@
     "name": "charlottedunois/eventemitter",
     "type": "library",
     "description": "This is an Event Emitter equivalent to Node.js' Event Emitter.",
-    "keywords": [ "events", "event", "emitter" ],
+    "keywords": [ "events", "event", "emitter", "eventemitter" ],
     "homepage": "https://github.com/CharlotteDunois/EventEmitter",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Charlotte Dunois",
