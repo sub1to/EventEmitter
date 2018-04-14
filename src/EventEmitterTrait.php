@@ -10,7 +10,7 @@
 namespace CharlotteDunois\Events;
 
 /**
- * Our Event Emitter Trait, equivalent to Node.js' Event Emitter.
+ * Our Event Emitter Trait.
  */
 trait EventEmitterTrait {
     /**
@@ -154,6 +154,9 @@ trait EventEmitterTrait {
      * @param string  $event
      * @param mixed   $arguments
      * @throws \InvalidArgumentException
+     * @throws \Throwable                 Any Throwable, Exception, Error or ErrorException by the listener.
+     * @throws \Exception                 Any Throwable, Exception, Error or ErrorException by the listener.
+     * @throws \Error                     Any Throwable, Exception, Error or ErrorException by the listener.
      */
     function emit($event, ...$arguments) {
         if($event === null) {
@@ -162,15 +165,7 @@ trait EventEmitterTrait {
         
         if(isset($this->listeners[$event])) {
             foreach($this->listeners[$event] as $listener) {
-                try {
-                    $listener(...$arguments);
-                } catch(\Throwable $e) {
-                    $this->emit('error', $e);
-                } catch(\Exception $e) {
-                    $this->emit('error', $e);
-                } catch(\ErrorException $e) {
-                    $this->emit('error', $e);
-                }
+                $listener(...$arguments);
             }
         }
         
@@ -179,15 +174,7 @@ trait EventEmitterTrait {
             unset($this->onceListeners[$event]);
             
             foreach($listeners as $listener) {
-                try {
-                    $listener(...$arguments);
-                } catch(\Throwable $e) {
-                    $this->emit('error', $e);
-                } catch(\Exception $e) {
-                    $this->emit('error', $e);
-                } catch(\ErrorException $e) {
-                    $this->emit('error', $e);
-                }
+                $listener(...$arguments);
             }
         }
     }
