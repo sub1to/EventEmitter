@@ -54,7 +54,8 @@ interface EventEmitterInterface {
     /**
      * Emits an event, catching all exceptions and emitting an error event for these exceptions.
      * @param string  $event
-     * @param mixed   $arguments
+     * @param mixed   ...$arguments
+     * @return void
      */
     function emit(string $event, ...$arguments);
 }
