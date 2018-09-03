@@ -9,6 +9,9 @@
 
 namespace CharlotteDunois\Events;
 
+/**
+ * The event emitter interface.
+ */
 interface EventEmitterInterface {
     /**
      * Attach a listener to an event.
