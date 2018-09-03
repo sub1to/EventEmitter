@@ -30,15 +30,10 @@ trait EventEmitterTrait {
      * @param string    $event
      * @param callable  $listener
      * @return $this
-     * @throws \InvalidArgumentException
      */
-    function on($event, callable $listener) {
-        if($event === null) {
-            throw new \InvalidArgumentException('Event name must not be null');
-        }
-        
+    function on(string $event, callable $listener) {
         if(!isset($this->listeners[$event])) {
-            $this->listeners[$event] = [];
+            $this->listeners[$event] = array();
         }
         
         $this->listeners[$event][] = $listener;
@@ -51,15 +46,10 @@ trait EventEmitterTrait {
      * @param string    $event
      * @param callable  $listener
      * @return $this
-     * @throws \InvalidArgumentException
      */
-    function once($event, callable $listener) {
-        if($event === null) {
-            throw new \InvalidArgumentException('Event name must not be null');
-        }
-        
+    function once(string $event, callable $listener) {
         if(!isset($this->onceListeners[$event])) {
-            $this->onceListeners[$event] = [];
+            $this->onceListeners[$event] = array();
         }
         
         $this->onceListeners[$event][] = $listener;
@@ -72,13 +62,8 @@ trait EventEmitterTrait {
      * @param string    $event
      * @param callable  $listener
      * @return $this
-     * @throws \InvalidArgumentException
      */
-    function removeListener($event, callable $listener) {
-        if($event === null) {
-            throw new \InvalidArgumentException('Event name must not be null');
-        }
-        
+    function removeListener(string $event, callable $listener) {
         if(isset($this->listeners[$event])) {
             $index = \array_search($listener, $this->listeners[$event], true);
             if($index !== false) {
@@ -107,7 +92,7 @@ trait EventEmitterTrait {
      * @param string|null  $event
      * @return $this
      */
-    function removeAllListeners($event = null) {
+    function removeAllListeners(?string $event = null) {
         if($event !== null) {
             unset($this->listeners[$event]);
         } else {
@@ -128,7 +113,7 @@ trait EventEmitterTrait {
      * @param string|null  $event
      * @return array
      */
-    function listeners($event = null) {
+    function listeners(?string $event = null) {
         if($event === null) {
             $events = array();
             $eventNames = \array_unique(\array_merge(\array_keys($this->listeners), \array_keys($this->onceListeners)));
@@ -153,16 +138,11 @@ trait EventEmitterTrait {
      * Emits an event, catching all exceptions and emitting an error event for these exceptions.
      * @param string  $event
      * @param mixed   $arguments
-     * @throws \InvalidArgumentException
      * @throws \Throwable                 Any Throwable, Exception, Error or ErrorException by the listener.
      * @throws \Exception                 Any Throwable, Exception, Error or ErrorException by the listener.
      * @throws \Error                     Any Throwable, Exception, Error or ErrorException by the listener.
      */
-    function emit($event, ...$arguments) {
-        if($event === null) {
-            throw new \InvalidArgumentException('Event name must not be null');
-        }
-        
+    function emit(string $event, ...$arguments) {
         if(isset($this->listeners[$event])) {
             foreach($this->listeners[$event] as $listener) {
                 $listener(...$arguments);
