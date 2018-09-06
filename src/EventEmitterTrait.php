@@ -144,13 +144,13 @@ trait EventEmitterTrait {
      * @throws \Error                     Any Throwable, Exception, Error or ErrorException by the listener.
      */
     function emit(string $event, ...$arguments) {
-        if(isset($this->listeners[$event])) {
+        if(!empty($this->listeners[$event])) {
             foreach($this->listeners[$event] as $listener) {
                 $listener(...$arguments);
             }
         }
         
-        if(isset($this->onceListeners[$event])) {
+        if(!empty($this->onceListeners[$event])) {
             $listeners = $this->onceListeners[$event];
             unset($this->onceListeners[$event]);
             
