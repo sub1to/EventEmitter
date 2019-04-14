@@ -20,9 +20,6 @@ trait EventEmitterErrorTrait {
      * @param string  $event
      * @param mixed   ...$arguments
      * @return void
-     * @throws \Throwable                                       Any Throwable, Exception, Error or ErrorException by the listener.
-     * @throws \Exception                                       Any Throwable, Exception, Error or ErrorException by the listener.
-     * @throws \Error                                           Any Throwable, Exception, Error or ErrorException by the listener.
      * @throws \CharlotteDunois\Events\UnhandledErrorException  Thrown when an error event goes unhandled.
      */
     function emit(string $event, ...$arguments) {

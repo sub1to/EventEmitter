@@ -139,9 +139,6 @@ trait EventEmitterTrait {
      * @param string  $event
      * @param mixed   ...$arguments
      * @return void
-     * @throws \Throwable                 Any Throwable, Exception, Error or ErrorException by the listener.
-     * @throws \Exception                 Any Throwable, Exception, Error or ErrorException by the listener.
-     * @throws \Error                     Any Throwable, Exception, Error or ErrorException by the listener.
      */
     function emit(string $event, ...$arguments) {
         if(!empty($this->listeners[$event])) {
