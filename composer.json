@@ -1,5 +1,5 @@
 {
-    "name": "charlottedunois/eventemitter",
+    "name": "sub1to/eventemitter",
     "type": "library",
     "description": "This is an Event Emitter equivalent to Node.js' Event Emitter.",
     "keywords": [ "events", "event", "emitter", "eventemitter" ],
